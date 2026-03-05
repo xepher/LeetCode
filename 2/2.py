@@ -27,7 +27,7 @@ class Solution:
         current_node_lhs = lhs
         current_node_rhs = rhs
         step_in = False
-        while(current_node_lhs.next != None and current_node_rhs.next != None):
+        while current_node_lhs.next != None and current_node_rhs.next != None:
             sum_val = current_node_lhs.val + current_node_rhs.val
             if step_in:
                 sum_val += 1
@@ -48,7 +48,7 @@ class Solution:
             pre = current_node_lhs
             current_node_lhs.next = current_node_rhs = current_node_rhs.next
             current_node_lhs = current_node_lhs.next
-            while(current_node_lhs != None):
+            while current_node_lhs != None:
                 sum_val = current_node_lhs.val
                 if step_in:
                     sum_val += 1
@@ -67,7 +67,7 @@ class Solution:
             step_in = sum_val >= 10
             pre = current_node_lhs
             current_node_lhs = current_node_lhs.next
-            while(current_node_lhs != None):
+            while current_node_lhs != None:
                 sum_val = current_node_lhs.val
                 if step_in:
                     sum_val += 1
@@ -90,15 +90,15 @@ class Solution:
             pre.next = ListNode(1)
 
         result = []
-        while(lhs != None):
+        while lhs != None:
             result.append(lhs.val)
             lhs = lhs.next
-        return result
+        return self.buildList(result)
 
     def printList(self, link_list):
         i = 0
         current_node = link_list
-        while(current_node != None):
+        while current_node != None:
             if current_node.next == None:
                 next = 'null'
                 print(f"index: {i}, value: {current_node.val}, next: {next}")
@@ -122,13 +122,13 @@ class Solution:
 
 if __name__ == '__main__':
     solution = Solution()
-    l1_numbers = [9,9]
+    l1_numbers = [9, 9]
     l2_numbers = [9]
-    l1_numbers = [2,4,5]
-    l2_numbers = [5,6,4]
+    l1_numbers = [2, 4, 5]
+    l2_numbers = [5, 6, 4]
     l1_numbers = [0]
-    l2_numbers = [9,9]
+    l2_numbers = [9, 9]
     l1_list = solution.buildList(l1_numbers)
     l2_list = solution.buildList(l2_numbers)
 
-    solution.addTwoNumbers(l1_list, l2_list)
+    solution.printList(solution.addTwoNumbers(l1_list, l2_list))
